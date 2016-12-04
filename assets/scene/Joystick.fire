@@ -34,6 +34,9 @@
     "_children": [
       {
         "__id__": 2
+      },
+      {
+        "__id__": 10
       }
     ],
     "_localZOrder": 0,
@@ -66,15 +69,12 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 960,
-      "height": 640
+      "width": 1338,
+      "height": 750
     },
     "_children": [
       {
         "__id__": 3
-      },
-      {
-        "__id__": 10
       }
     ],
     "_rotationX": 0,
@@ -83,8 +83,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 480,
-      "y": 320
+      "x": 669,
+      "y": 375
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -125,8 +125,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 0,
-      "height": 0
+      "width": 1338,
+      "height": 750
     },
     "_children": [
       {
@@ -352,11 +352,11 @@
       "__id__": 7
     },
     "stickBG": {
-      "__id__": 4
+      "__id__": 6
     },
-    "stickX": -300,
-    "stickY": -200,
-    "touchType": 0,
+    "stickX": 0,
+    "stickY": 0,
+    "touchType": 1,
     "directionType": 0,
     "sprite": {
       "__id__": 10
@@ -376,7 +376,7 @@
     },
     "_cascadeOpacityEnabled": true,
     "_parent": {
-      "__id__": 2
+      "__id__": 1
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -395,8 +395,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 316,
-      "y": 91
+      "x": 985,
+      "y": 466
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -450,8 +450,8 @@
     "_enabled": true,
     "_designResolution": {
       "__type__": "cc.Size",
-      "width": 960,
-      "height": 640
+      "width": 1338,
+      "height": 750
     },
     "_fitWidth": false,
     "_fitHeight": true

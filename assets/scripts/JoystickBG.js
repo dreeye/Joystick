@@ -64,7 +64,6 @@ cc.Class({
              //手指在圆圈内触摸,控杆跟随触摸点
             if(radius > distance)
             {
-                cc.log(touchPos);
                 self.stick.setPosition(touchPos);   
                 return true;
             }
@@ -130,7 +129,10 @@ cc.Class({
         Math.pow(pos1.y - pos2.y, 2));
     },
 
-     //计算弧度并返回
+    /*角度/弧度转换
+    角度 = 弧度 * 180 / Math.PI
+    弧度 = 角度 * Math.PI / 180*/
+    //计算弧度并返回
     _getRadian: function(point)
     {
         this._radian = Math.PI / 180 * this._getAngle(point);
@@ -143,8 +145,6 @@ cc.Class({
         
         var pos = this.node.getPosition();
         this._angle = Math.atan2(point.y - pos.y, point.x - pos.x) * (180/Math.PI);
-        cc.log(pos);
-        cc.log(Math.atan2(point.y - pos.y, point.x - pos.x));
         return this._angle;
     },
 
