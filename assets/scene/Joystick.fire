@@ -250,7 +250,7 @@
       "__id__": 4
     },
     "_enabled": true,
-    "stick": {
+    "dot": {
       "__id__": 7
     },
     "_joyCom": null,
@@ -356,7 +356,7 @@
     },
     "stickX": 0,
     "stickY": 0,
-    "touchType": 1,
+    "touchType": 0,
     "directionType": 0,
     "sprite": {
       "__id__": 10

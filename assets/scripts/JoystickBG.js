@@ -4,7 +4,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        stick: {
+        dot: {
             default: null,
             type: cc.Node,
             displayName: '摇杆节点',
@@ -54,17 +54,23 @@ cc.Class({
     _initTouchEvent: function()
     {
         var self = this;
+
         self.node.on(cc.Node.EventType.TOUCH_START, function (event) {
+
             // 获取触摸位置的世界坐标转换成圆圈的相对坐标（以圆圈的锚点为基准）
             var touchPos = self.node.convertToNodeSpaceAR(event.getLocation());
             //触摸点与圆圈中心的距离
             var distance = self._getDistance(touchPos,cc.p(0,0));
             //圆圈半径
             var radius = self.node.width / 2;
+            // 记录摇杆位置，给touch move使用
+            self._stickPos = touchPos;
+            var posX = self.node.getPosition().x + touchPos.x;
+            var posY = self.node.getPosition().y + touchPos.y;
              //手指在圆圈内触摸,控杆跟随触摸点
             if(radius > distance)
             {
-                self.stick.setPosition(touchPos);   
+                self.dot.setPosition(cc.p(posX, posY));
                 return true;
             }
             return false;
@@ -74,31 +80,33 @@ cc.Class({
             var touchPos = self.node.convertToNodeSpaceAR(event.getLocation());
             var distance = self._getDistance(touchPos,cc.p(0,0));
             var radius = self.node.width / 2;
+            // 由于摇杆的postion是以父节点为锚点，所以定位要加上ring和dot当前的位置(stickX,stickY)
+            var posX = self.node.getPosition().x + touchPos.x;
+            var posY = self.node.getPosition().y + touchPos.y;
             if(radius > distance)
             {
-                self.stick.setPosition(touchPos);
+                self.dot.setPosition(cc.p(posX, posY));
             }
             else
             {
                 //控杆永远保持在圈内，并在圈内跟随触摸更新角度
-                //cc.log(self.node.getPosition());
-                var x = self.node.getPositionX() + Math.cos(self._getRadian(touchPos)) * radius;
-                var y = self.node.getPositionY() + Math.sin(self._getRadian(touchPos)) * radius;
-                self.stick.setPosition(cc.p(x, y));
+                var x = self.node.getPosition().x + Math.cos(self._getRadian(cc.p(posX,posY))) * radius;
+                var y = self.node.getPosition().y + Math.sin(self._getRadian(cc.p(posX,posY))) * radius;
+                self.dot.setPosition(cc.p(x, y));
             }
             //更新角度
-            this._getAngle(touchPos);
+            self._getAngle(cc.p(posX,posY));
             //设置实际速度
-            this._setSpeed(touchPos);
+            self._setSpeed(cc.p(posX,posY));
         }, self);
 
         // 触摸在圆圈内离开或在圆圈外离开后，摇杆归位，player速度为0
         self.node.on(cc.Node.EventType.TOUCH_END, function (event) {
-            self.stick.setPosition(self.node.getPosition());
+            self.dot.setPosition(self.node.getPosition());
             self._speed = 0;
         }, self);
         self.node.on(cc.Node.EventType.TOUCH_CANCEL, function (event) {
-            self.stick.setPosition(self.node.getPosition());
+            self.dot.setPosition(self.node.getPosition());
             self._speed = 0;
         }, self);
     },
