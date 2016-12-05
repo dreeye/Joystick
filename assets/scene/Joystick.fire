@@ -163,7 +163,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "background",
+    "_name": "ring",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -264,7 +264,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "ball",
+    "_name": "dot",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -348,10 +348,10 @@
       "__id__": 3
     },
     "_enabled": true,
-    "stick": {
+    "dot": {
       "__id__": 7
     },
-    "stickBG": {
+    "ring": {
       "__id__": 6
     },
     "stickX": 0,
@@ -360,7 +360,9 @@
     "directionType": 0,
     "sprite": {
       "__id__": 10
-    }
+    },
+    "_stickPos": null,
+    "_touchLocation": null
   },
   {
     "__type__": "cc.Node",
