@@ -354,8 +354,8 @@
     "ring": {
       "__id__": 6
     },
-    "stickX": 0,
-    "stickY": 0,
+    "stickX": -100,
+    "stickY": -200,
     "touchType": 0,
     "directionType": 0,
     "sprite": {
