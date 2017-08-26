@@ -75,6 +75,12 @@ cc.Class({
             case Common.DirectionType.ALL:   
                 this._allDirectionsMove();
                 break;
+            case Common.DirectionType.EIGHT:
+                this._NDirectionMove(8);
+                break;
+            case Common.DirectionType.FOUR:
+                this._NDirectionMove(4);
+                break;
             default :
                 break;
         }
@@ -84,6 +90,14 @@ cc.Class({
     {
         this._playerNode.x += Math.cos(this._angle * (Math.PI/180)) * this._speed;
         this._playerNode.y += Math.sin(this._angle * (Math.PI/180)) * this._speed;
+    },
+
+    // N方向移动
+    _NDirectionMove: function(n){
+        let r = 360 / n;
+        let angle = Math.floor((this._angle + r / 2) / r) * r;
+        this._playerNode.x += Math.cos(angle * (Math.PI/180)) * this._speed;
+        this._playerNode.y += Math.sin(angle * (Math.PI/180)) * this._speed;
     },
 
      //计算两点间的距离并返回
